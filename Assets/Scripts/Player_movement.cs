@@ -18,7 +18,9 @@ public class Player_movement : MonoBehaviour
     
     private void FixedUpdate()
     {
+
         // applying movement to the rigidbody2D :
-            rb.MovePosition(rb.position + movement * MoveSpeed * Time.fixedDeltaTime);   
+            movement.Normalize(); // normalizing movement so it doesn't go faster diagonally
+            rb.MovePosition(rb.position + movement * MoveSpeed * Time.fixedDeltaTime); 
     }
 }
