@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Camera_script : MonoBehaviour
 {
+    
     public float sight; //camera sight (default: 10)
     public float camera_delay; //camera follow delay time
     Vector3 offset; //camera's position offset
