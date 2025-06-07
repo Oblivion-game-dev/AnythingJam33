@@ -8,12 +8,15 @@ public class AIchase : MonoBehaviour
 {
     public GameObject player;
     public float speed;
+    public float distance_before_stop = 1;
     private float distance;
     public float enemy_sight = 100;
+    enemy_detector enemy_Detector;
 
     void Start()
     {
         player = GameObject.Find("Player");
+        enemy_Detector = GetComponentInChildren<enemy_detector>();
     }
     void Update()
     {
@@ -22,10 +25,11 @@ public class AIchase : MonoBehaviour
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        if (distance <= enemy_sight)
+        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+
+        if (distance <= enemy_sight && distance >= distance_before_stop && !enemy_Detector.near_another)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
-            transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         }
     }
 }
