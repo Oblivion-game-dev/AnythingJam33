@@ -7,6 +7,7 @@ public class Player_movement : MonoBehaviour
     public Rigidbody2D rb; // get the rigidbody of the player
     Vector2 movement; // movement input var
     public Weapon weapon;
+    public Animator animator;
  
     void Update()
     {
@@ -16,14 +17,20 @@ public class Player_movement : MonoBehaviour
             movement.y = Input.GetAxisRaw("Vertical");
 
     }
-
     private void FixedUpdate()
     {
         // applying movement to the rigidbody2D :
-
         movement.Normalize(); // normalizing movement so it doesn't go faster diagonally
         rb.MovePosition(rb.position + movement * MoveSpeed * Time.fixedDeltaTime);
+
+        // animate
+        if (movement.x != 0 || movement.y != 0)
+        {
+            animator.SetBool("running", true);
+        }
+        else
+        {
+            animator.SetBool("running", false);
+        }
     }
-
-
 }

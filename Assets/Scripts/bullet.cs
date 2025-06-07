@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    public float damage = 5;
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("enemy"))
         {
+            collision.gameObject.GetComponent<Enemy>().health -= damage;
             Destroy(gameObject);
-            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("surroundings"))
+        {
+            Destroy(gameObject);
         }
     }
 }
