@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     GameObject exp;
     public float health;
     public float max_health;
+    public AudioSource kill;
     void Start()
     {
         decide_exp_type();
@@ -21,9 +22,12 @@ public class Enemy : MonoBehaviour
 
     void death()
     {
+        kill.Play();
         GameObject exp_drop = Instantiate(exp);
         exp_drop.gameObject.transform.position = gameObject.transform.position;
         Destroy(gameObject);
+
+
     }
 
     void decide_exp_type()

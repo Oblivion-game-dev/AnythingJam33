@@ -9,7 +9,11 @@ public class Player_movement : MonoBehaviour
     public Weapon weapon;
     public Animator animator;
     bool facing_right = false;
-
+    public AudioSource idk;
+    private void Start()
+    {
+        idk.Play();
+    }
     void Update()
     {
         // Input :
