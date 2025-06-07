@@ -8,19 +8,25 @@ public class Player_movement : MonoBehaviour
     Vector2 movement; // movement input var
     public Weapon weapon;
     public Animator animator;
- 
+    bool facing_right = false;
+
     void Update()
     {
         // Input :
 
-            movement.x = Input.GetAxisRaw("Horizontal");
-            movement.y = Input.GetAxisRaw("Vertical");
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+
+        if (movement.x > 0 && !facing_right)
+            Flip();
+        else if (movement.x < 0 && facing_right)
+            Flip();
 
     }
     private void FixedUpdate()
     {
         // applying movement to the rigidbody2D :
-        movement.Normalize(); // normalizing movement so it doesn't go faster diagonally
+        movement.Normalize();
         rb.MovePosition(rb.position + movement * MoveSpeed * Time.fixedDeltaTime);
 
         // animate
@@ -32,5 +38,13 @@ public class Player_movement : MonoBehaviour
         {
             animator.SetBool("running", false);
         }
+    }
+    
+    void Flip()
+    {
+        facing_right = !facing_right;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 }

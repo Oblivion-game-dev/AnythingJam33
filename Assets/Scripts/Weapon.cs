@@ -14,7 +14,9 @@ public class Weapon : MonoBehaviour
     public float shoot_anim_time = 0.3f;
     float shoot_anim_timer;
     Animator animator;
-    private void Start() {
+    public bool auto_fire = true;
+    private void Start()
+    {
         animator = player.GetComponent<Player_movement>().animator;
     }
     void FixedUpdate()
@@ -30,7 +32,7 @@ public class Weapon : MonoBehaviour
         //firing
 
         fire_timer += Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && fire_timer >= fire_CD)
+        if ((Input.GetMouseButtonDown(0) || auto_fire) && fire_timer >= fire_CD)
         {
             Fire();
             fire_timer = 0;
