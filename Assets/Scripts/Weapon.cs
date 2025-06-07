@@ -10,7 +10,13 @@ public class Weapon : MonoBehaviour
     Vector2 aim_direction;
     float fire_timer;
     public float fire_CD;
-
+    public GameObject player;
+    public float shoot_anim_time = 0.3f;
+    float shoot_anim_timer;
+    Animator animator;
+    private void Start() {
+        animator = player.GetComponent<Player_movement>().animator;
+    }
     void FixedUpdate()
     {
         //making weapon look at mouse
@@ -29,9 +35,21 @@ public class Weapon : MonoBehaviour
             Fire();
             fire_timer = 0;
         }
+
+        //animate
+        if (animator.GetBool("shooting") == true)
+        {
+            shoot_anim_timer += Time.deltaTime;
+            if (shoot_anim_timer >= shoot_anim_time)
+            {
+                animator.SetBool("shooting", false);
+                shoot_anim_timer = 0;
+            }
+        }
     }
     public void Fire()
     {
+        animator.SetBool("shooting", true);
         GameObject bullet = Instantiate(bulletprefab, transform.position, transform.rotation);
         bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.up * fireForce, ForceMode2D.Impulse);
     }
