@@ -762,7 +762,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 211587, guid: 1e18a7c4871079e43b0eb651d7284c12, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -925,7 +925,7 @@ MonoBehaviour:
   weapon: {fileID: 5128636452201135731}
   animator: {fileID: 5128636451216839574}
   idk: {fileID: 0}
-  sprite: {fileID: 0}
+  sprite: {fileID: 5128636451216839573}
 --- !u!58 &5128636451503819756
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -936,7 +936,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1026,10 +1026,11 @@ MonoBehaviour:
   firepoint: {fileID: 5128636453253305981}
   fireForce: 20
   cam: {fileID: 0}
-  fire_CD: 0.1
+  fire_CD: 0.05
   player: {fileID: 5128636451503819753}
   shoot_anim_time: 0.3
-  auto_fire: 0
+  auto_fire: 1
+  shoot_sound: {fileID: 8300000, guid: bf8c931da10350d4485aef9ded3d6b3f, type: 3}
 --- !u!212 &5128636452201135730
 SpriteRenderer:
   m_ObjectHideFlags: 0
