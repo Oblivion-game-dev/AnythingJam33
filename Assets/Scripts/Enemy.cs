@@ -7,9 +7,11 @@ public class Enemy : MonoBehaviour
     GameObject exp;
     public float health;
     public float max_health;
-    public AudioSource kill;
+    public AudioClip kill_sound;
+    public sound sfx_manager;
     void Start()
     {
+        sfx_manager = GameObject.FindGameObjectWithTag("manager").GetComponent<sound>();
         decide_exp_type();
     }
     void Update()
@@ -22,12 +24,10 @@ public class Enemy : MonoBehaviour
 
     void death()
     {
-        kill.Play();
+        sfx_manager.play_sound(kill_sound);
         GameObject exp_drop = Instantiate(exp);
         exp_drop.gameObject.transform.position = gameObject.transform.position;
         Destroy(gameObject);
-
-
     }
 
     void decide_exp_type()

@@ -15,8 +15,11 @@ public class Weapon : MonoBehaviour
     float shoot_anim_timer;
     Animator animator;
     public bool auto_fire = true;
+    sound sfx_manager;
+    public AudioClip shoot_sound;
     private void Start()
     {
+        sfx_manager = GameObject.FindGameObjectWithTag("manager").GetComponent<sound>();
         animator = player.GetComponent<Player_movement>().animator;
     }
     void FixedUpdate()
@@ -51,6 +54,7 @@ public class Weapon : MonoBehaviour
     }
     public void Fire()
     {
+        sfx_manager.play_sound(shoot_sound);
         animator.SetBool("shooting", true);
         GameObject bullet = Instantiate(bulletprefab, transform.position, transform.rotation);
         bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.up * fireForce, ForceMode2D.Impulse);
