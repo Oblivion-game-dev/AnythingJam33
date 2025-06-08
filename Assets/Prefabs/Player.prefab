@@ -208,7 +208,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903756752}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -808,6 +808,7 @@ GameObject:
   - component: {fileID: 5128636451503819752}
   - component: {fileID: 5128636451503819756}
   - component: {fileID: 1694530087}
+  - component: {fileID: 466192364}
   m_Layer: 0
   m_Name: Player
   m_TagString: player
@@ -919,10 +920,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d4c51c15a792644db34ab4c2b4b5170, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 5
+  MoveSpeed: 3
   rb: {fileID: 5128636451503819755}
   weapon: {fileID: 5128636452201135731}
   animator: {fileID: 5128636451216839574}
+  idk: {fileID: 0}
+  sprite: {fileID: 0}
 --- !u!58 &5128636451503819756
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -938,7 +941,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.56
 --- !u!114 &1694530087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -954,7 +957,25 @@ MonoBehaviour:
   exp: 0
   level: 0
   exp_required: 10
-  exp_increase_per_level: 2
+  exp_increase_each_level: 2
+--- !u!114 &466192364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5128636451503819753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb565852d8b471449a9e55411063825d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  s3: {fileID: 0}
+  s2: {fileID: 0}
+  attack_rate: 0
+  immunity_time: 3
+  health: 3
+  immunity: 0
 --- !u!1 &5128636452201135729
 GameObject:
   m_ObjectHideFlags: 0

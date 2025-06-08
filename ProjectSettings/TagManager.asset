@@ -9,6 +9,7 @@ TagManager:
   - exp
   - exp_picker
   - player
+  - manager
   layers:
   - Default
   - TransparentFX

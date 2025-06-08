@@ -7,6 +7,10 @@ public class bullet : MonoBehaviour
     public float bullet_duration = 1.5f;
     float timer;
     public float damage = 5;
+    void Start()
+    {
+        
+    }
     void Update()
     {
         timer += Time.deltaTime;

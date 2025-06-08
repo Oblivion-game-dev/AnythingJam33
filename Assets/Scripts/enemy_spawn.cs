@@ -38,7 +38,7 @@ public class enemy_spawn : MonoBehaviour
         }
         if(spawn_time - time_decrease_each_wave > 0) spawn_time -= time_decrease_each_wave;
         
-        yield return new WaitForSeconds(enemy_count * spawn_time + time_between_waves);
+        yield return new WaitForSeconds(time_between_waves);
         wave += 1;
         wave_done = true;
     }
